@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TradeMind</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>TradeMind</h2>
+
+        <ul>
+
+            <li>🏠 Dashboard</li>
+
+            <li>🌍 Global Markets</li>
+
+            <li>🇮🇳 Indian Markets</li>
+
+            <li>📊 AI Analysis</li>
+
+            <li>📖 Trade Journal</li>
+
+            <li>📈 Reports</li>
+
+            <li>⚙ Settings</li>
+
+        </ul>
+
+    </div>
+
+    <div class="content">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Dashboard</h1>
+
+<p>Database Status: {{ db_status }}</p>
+
+<h2>🌍 Global Markets</h2>
+
+<div class="card-container">
+
+    {% for market in markets %}
+
+    <div class="card">
+
+        <h3>{{ market.name }}</h3>
+
+        <p>{{ market.price }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<div class="big-card">
+
+    <h2>🤖 AI Market Analysis</h2>
+
+    <p>Waiting for market data...</p>
+
+</div>
+
+<div class="big-card">
+
+    <h2>📰 Market News</h2>
+
+    <p>News will appear here...</p>
+
+</div>
+
+{% endblock %}
