@@ -79,15 +79,50 @@
 </div>
 
 
-</table>
-
 <!-- Existing AI Section -->
 
 <div class="big-card">
 
     <h2>🤖 AI Market Analysis</h2>
 
-    <p>Waiting for market data...</p>
+    {% if analysis.sentiment == "Bullish" %}
+
+    <h3 class="analysis-bullish">
+    🟢 {{ analysis.sentiment }}
+    </h3>
+
+{% elif analysis.sentiment == "Bearish" %}
+
+    <h3 class="analysis-bearish">
+    🔴 {{ analysis.sentiment }}
+    </h3>
+
+{% else %}
+
+    <h3 class="analysis-neutral">
+    🟡 {{ analysis.sentiment }}
+    </h3>
+
+{% endif %}
+
+    <h4>
+        Confidence :
+        {{ analysis.confidence }}%
+    </h4>
+
+    <p>
+        <h4>Market Highlights</h4>
+
+    <ul>
+
+{% for item in analysis.highlights %}
+
+    <li>{{ item }}</li>
+
+{% endfor %}
+
+    </ul>
+    </p>
 
 </div>
 

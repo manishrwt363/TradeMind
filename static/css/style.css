@@ -177,3 +177,20 @@ body{
     line-height:1.5;
 
 }
+
+<div class="big-card">
+
+    <h2>🤖 AI Market Analysis</h2>
+
+    <h3>{{ analysis.sentiment }}</h3>
+
+    <h4>
+        Confidence :
+        {{ analysis.confidence }}%
+    </h4>
+
+    <p>
+        {{ analysis.summary }}
+    </p>
+
+</div>

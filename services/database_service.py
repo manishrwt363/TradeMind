@@ -79,7 +79,7 @@ def get_latest_market_data():
         row["fetch_time"] = row["fetch_time"].strftime("%I:%M %p")
 
     cursor.close()
-    
+
     return data
 
 
@@ -108,6 +108,31 @@ def get_market_statistics():
     """
 
     cursor.execute(query)
+
+    data = cursor.fetchall()
+
+    cursor.close()
+
+    return data
+
+def get_market_history(symbol):
+
+    cursor = db.cursor(dictionary=True)
+
+    query = """
+    SELECT
+
+        fetch_time,
+        price
+
+    FROM market_data
+
+    WHERE symbol=%s
+
+    ORDER BY fetch_time;
+    """
+
+    cursor.execute(query, (symbol,))
 
     data = cursor.fetchall()
 
