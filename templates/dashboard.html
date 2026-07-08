@@ -6,32 +6,61 @@
 
 <p>Database Status: {{ db_status }}</p>
 
+<!-- ========================= -->
+<!-- Global Markets            -->
+<!-- ========================= -->
+
 <h2>🌍 Global Markets</h2>
 
-<!-- Existing Market Cards -->
 <div class="card-container">
 
     {% for market in markets %}
 
-    <div class="card">
+    <div
+        class="card market-card"
+        data-symbol="{{ market.symbol }}"
+        data-name="{{ market.name }}"
+    >
 
         <h3>{{ market.name }}</h3>
 
         <h2>{{ market.price }}</h2>
 
         {% if market.change_value >= 0 %}
-            <p class="positive">▲ {{ market.change_value }}</p>
-            <p class="positive">{{ market.change_percent }}%</p>
+
+            <p class="positive">
+                ▲ {{ market.change_value }}
+            </p>
+
+            <p class="positive">
+                {{ market.change_percent }}%
+            </p>
+
         {% else %}
-            <p class="negative">▼ {{ market.change_value }}</p>
-            <p class="negative">{{ market.change_percent }}%</p>
+
+            <p class="negative">
+                ▼ {{ market.change_value }}
+            </p>
+
+            <p class="negative">
+                {{ market.change_percent }}%
+            </p>
+
         {% endif %}
 
-        <p>Status: {{ market.market_status }}</p>
+        <p>
+            Status :
+            {{ market.market_status }}
+        </p>
 
         <small>
-            Updated<br>
+
+            Updated
+
+            <br>
+
             {{ market.fetch_time }}
+
         </small>
 
     </div>
@@ -40,46 +69,85 @@
 
 </div>
 
-<!-- 👇 ADD THE NEW STATISTICS SECTION HERE -->
+<!-- ========================= -->
+<!-- Market Chart              -->
+<!-- ========================= -->
+
+<div class="big-card">
+
+    <h2>📈 Market Price History</h2>
+
+    <div class="chart-container">
+
+        <canvas id="marketChart"></canvas>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Market Statistics         -->
+<!-- ========================= -->
 
 <h2>📊 Market Statistics</h2>
 
 <div class="card-container">
 
-{% for row in statistics %}
+    {% for row in statistics %}
 
-<div class="card">
+    <div class="card">
 
-    <h3>{{ row.market_name }}</h3>
+        <h3>{{ row.market_name }}</h3>
 
-    <p>
-        <strong>Highest</strong><br>
-        {{ row.highest_price }}
-    </p>
+        <p>
 
-    <p>
-        <strong>Lowest</strong><br>
-        {{ row.lowest_price }}
-    </p>
+            <strong>Highest</strong>
 
-    <p>
-        <strong>Average</strong><br>
-        {{ row.average_price }}
-    </p>
+            <br>
 
-    <p>
-        <strong>Records</strong><br>
-        {{ row.total_records }}
-    </p>
+            {{ row.highest_price }}
+
+        </p>
+
+        <p>
+
+            <strong>Lowest</strong>
+
+            <br>
+
+            {{ row.lowest_price }}
+
+        </p>
+
+        <p>
+
+            <strong>Average</strong>
+
+            <br>
+
+            {{ row.average_price }}
+
+        </p>
+
+        <p>
+
+            <strong>Records</strong>
+
+            <br>
+
+            {{ row.total_records }}
+
+        </p>
+
+    </div>
+
+    {% endfor %}
 
 </div>
 
-{% endfor %}
-
-</div>
-
-
-<!-- Existing AI Section -->
+<!-- ========================= -->
+<!-- AI Analysis               -->
+<!-- ========================= -->
 
 <div class="big-card">
 
@@ -87,52 +155,65 @@
 
     {% if analysis.sentiment == "Bullish" %}
 
-    <h3 class="analysis-bullish">
-    🟢 {{ analysis.sentiment }}
-    </h3>
+        <h3 class="analysis-bullish">
 
-{% elif analysis.sentiment == "Bearish" %}
+            🟢 {{ analysis.sentiment }}
 
-    <h3 class="analysis-bearish">
-    🔴 {{ analysis.sentiment }}
-    </h3>
+        </h3>
 
-{% else %}
+    {% elif analysis.sentiment == "Bearish" %}
 
-    <h3 class="analysis-neutral">
-    🟡 {{ analysis.sentiment }}
-    </h3>
+        <h3 class="analysis-bearish">
 
-{% endif %}
+            🔴 {{ analysis.sentiment }}
+
+        </h3>
+
+    {% else %}
+
+        <h3 class="analysis-neutral">
+
+            🟡 {{ analysis.sentiment }}
+
+        </h3>
+
+    {% endif %}
 
     <h4>
+
         Confidence :
+
         {{ analysis.confidence }}%
+
     </h4>
 
-    <p>
-        <h4>Market Highlights</h4>
+    <h4>Market Highlights</h4>
 
     <ul>
 
-{% for item in analysis.highlights %}
+        {% for item in analysis.highlights %}
 
-    <li>{{ item }}</li>
+            <li>{{ item }}</li>
 
-{% endfor %}
+        {% endfor %}
 
     </ul>
-    </p>
 
 </div>
 
-<!-- Existing News Section -->
+<!-- ========================= -->
+<!-- Market News               -->
+<!-- ========================= -->
 
 <div class="big-card">
 
     <h2>📰 Market News</h2>
 
-    <p>News will appear here...</p>
+    <p>
+
+        News integration will be added in the next milestone.
+
+    </p>
 
 </div>
 

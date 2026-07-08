@@ -121,20 +121,19 @@ def get_market_history(symbol):
 
     query = """
     SELECT
-
         fetch_time,
         price
-
     FROM market_data
-
-    WHERE symbol=%s
-
-    ORDER BY fetch_time;
+    WHERE symbol = %s
+    ORDER BY fetch_time DESC
+    LIMIT 20;
     """
 
     cursor.execute(query, (symbol,))
 
     data = cursor.fetchall()
+
+    data.reverse()
 
     cursor.close()
 

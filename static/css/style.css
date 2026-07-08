@@ -194,3 +194,43 @@ body{
     </p>
 
 </div>
+
+#marketChart{
+
+    width:100%;
+
+    height:250px !important;
+
+    max-height:250px;
+
+}
+
+.chart-container{
+
+    position: relative;
+
+    height: 300px;
+
+    width: 100%;
+
+}
+
+#marketChart{
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+}
+
+.market-card{
+
+    cursor:pointer;
+
+}
+
+.market-card:hover{
+
+    border:1px solid #00C853;
+
+}
