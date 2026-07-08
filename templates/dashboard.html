@@ -8,6 +8,7 @@
 
 <h2>🌍 Global Markets</h2>
 
+<!-- Existing Market Cards -->
 <div class="card-container">
 
     {% for market in markets %}
@@ -16,13 +17,71 @@
 
         <h3>{{ market.name }}</h3>
 
-        <p>{{ market.price }}</p>
+        <h2>{{ market.price }}</h2>
+
+        {% if market.change_value >= 0 %}
+            <p class="positive">▲ {{ market.change_value }}</p>
+            <p class="positive">{{ market.change_percent }}%</p>
+        {% else %}
+            <p class="negative">▼ {{ market.change_value }}</p>
+            <p class="negative">{{ market.change_percent }}%</p>
+        {% endif %}
+
+        <p>Status: {{ market.market_status }}</p>
+
+        <small>
+            Updated<br>
+            {{ market.fetch_time }}
+        </small>
 
     </div>
 
     {% endfor %}
 
 </div>
+
+<!-- 👇 ADD THE NEW STATISTICS SECTION HERE -->
+
+<h2>📊 Market Statistics</h2>
+
+<div class="card-container">
+
+{% for row in statistics %}
+
+<div class="card">
+
+    <h3>{{ row.market_name }}</h3>
+
+    <p>
+        <strong>Highest</strong><br>
+        {{ row.highest_price }}
+    </p>
+
+    <p>
+        <strong>Lowest</strong><br>
+        {{ row.lowest_price }}
+    </p>
+
+    <p>
+        <strong>Average</strong><br>
+        {{ row.average_price }}
+    </p>
+
+    <p>
+        <strong>Records</strong><br>
+        {{ row.total_records }}
+    </p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+</table>
+
+<!-- Existing AI Section -->
 
 <div class="big-card">
 
@@ -31,6 +90,8 @@
     <p>Waiting for market data...</p>
 
 </div>
+
+<!-- Existing News Section -->
 
 <div class="big-card">
 

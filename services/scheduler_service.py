@@ -1,6 +1,7 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from jobs.market_job import update_market_data
+from services.logger_service import logger
 
 
 scheduler = BackgroundScheduler()
@@ -16,6 +17,4 @@ def start_scheduler():
 
     scheduler.start()
 
-    from services.logger_service import logger
-
-logger.info("Scheduler Started")
+    logger.info("Scheduler Started")
