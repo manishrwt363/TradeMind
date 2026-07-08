@@ -1,6 +1,8 @@
 import mysql.connector
 
-print("Connecting to MySQL...")
+from services.logger_service import logger
+
+logger.info("Connecting to MySQL...")
 
 db = mysql.connector.connect(
     host="127.0.0.1",
@@ -10,6 +12,6 @@ db = mysql.connector.connect(
     database="trademind"
 )
 
-print("Connected!")
+logger.info("Database Connected Successfully")
 
 cursor = db.cursor()
